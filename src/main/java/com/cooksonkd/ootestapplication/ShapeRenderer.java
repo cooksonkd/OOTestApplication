@@ -1,24 +1,27 @@
 package com.cooksonkd.ootestapplication;
-import java.util.ArrayList;
 
-public class ShapeRenderer {
+/**
+ * @author Net2
+ * 
+ */
+
+class ShapeRenderer {
 	private static final ShapeRenderer INSTANCE = new ShapeRenderer();
-	private ArrayList<Shape> shapes;
 	
-	public ShapeRenderer() {
-		shapes = new ArrayList<Shape>();
-	}
-	
+	/**
+	 * @return INSTANCE of ShapeRenderer
+	 */
 	public static ShapeRenderer getInstance() {
 		return INSTANCE;
 	}
 	
-	public void render(Circle circle) {
-		INSTANCE.shapes.add(circle);
+	/**
+	 * @param shape
+	 * @return a string that displays object instance variables
+	 */
+	public void render(Shape shape) {
+		System.out.print(shape.toString());
 	}
 	
-	public void render(Rectangle rectangle) {
-		INSTANCE.shapes.add(rectangle);
-	}
 	
 }

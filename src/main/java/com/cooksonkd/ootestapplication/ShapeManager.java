@@ -1,5 +1,4 @@
 package com.cooksonkd.ootestapplication;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cooksonkd.ootestapplication.ShapeRenderer;
@@ -8,6 +7,11 @@ import com.cooksonkd.ootestapplication.ShapeRenderer;
 public class ShapeManager {
 	private ShapeRenderer shapeRenderer = ShapeRenderer.getInstance();
 	
+	/**
+	 * @param shape
+	 * @param factor
+	 * scales instance variables of shapes by factor
+	 */
 	public void scale (Shape shape, double factor) {
 		if(shape instanceof Circle) {
 			((Circle) shape).radius *= factor;
@@ -18,18 +22,32 @@ public class ShapeManager {
 		}
 	}
 	
-	public double area(Circle circle) {
-		return Math.PI * circle.radius * circle.radius;
+	
+	/**
+	 * @param shape
+	 * @return area of shape based on instance
+	 */
+	public double area(Shape shape) {
+		double area = 0;
+		
+		if(shape instanceof Circle) {
+			area =  Math.PI * ((Circle) shape).radius * ((Circle) shape).radius;
+		}
+		else if(shape instanceof Rectangle) {
+			area = ((Rectangle) shape).width * ((Rectangle) shape).height;
+		}
+		return area;
 	}
 	
-	public double area(Rectangle rectangle) {
-		return rectangle.width * rectangle.height;
-	}
-	
+	/**
+	 * @param shapes
+	 * renders string containing details of shape
+	 */
 	public void render(List<Shape> shapes) {
 		for (Shape shape : shapes) {
 			if (shape instanceof Circle) {
 				shapeRenderer.render((Circle) shape);
+				this.area(shape);
 			}
 			else if (shape instanceof Rectangle) {
 				shapeRenderer.render((Rectangle) shape);
@@ -37,17 +55,6 @@ public class ShapeManager {
 		}
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ShapeManager sm = new ShapeManager();
-		
-		ArrayList<Shape> testShape = new ArrayList<Shape>();
-		
-		Shape circle = new Circle();
-		Shape rectangle = new Rectangle();
-		
-		
-	}
 }
 
 
