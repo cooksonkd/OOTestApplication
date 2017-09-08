@@ -4,22 +4,31 @@ import java.util.List;
 import com.cooksonkd.ootestapplication.ShapeRenderer;
 
 
+/**
+ * @author Keenan Cookson
+ *
+ */
 public class ShapeManager {
 	private ShapeRenderer shapeRenderer = ShapeRenderer.getInstance();
 	
 	/**
-	 * @param shape
-	 * @param factor
-	 * scales instance variables of shapes by factor
+	 * @param shape casts type Shape to the type of the class for which it is an instance
+	 * @param factor scales instance variables of shapes by factor
 	 */
 	public void scale (Shape shape, double factor) {
 		if(shape instanceof Circle) {
-			((Circle) shape).radius *= factor;
+			double newRadius;
+			newRadius = ((Circle) shape).radius *= factor;
+			((Circle) shape).setRadius(newRadius);
 		}
 		else if (shape instanceof Rectangle) {
-			((Rectangle) shape).height *= factor;
-			((Rectangle) shape).width *= factor;
-		}
+			double newWidth;
+			double newHeight;
+			newHeight = ((Rectangle) shape).height *= factor;
+			newWidth = ((Rectangle) shape).width *= factor;
+			((Rectangle) shape).setWidth(newWidth);
+			((Rectangle) shape).setHeight(newHeight);
+		}		
 	}
 	
 	
@@ -31,10 +40,10 @@ public class ShapeManager {
 		double area = 0;
 		
 		if(shape instanceof Circle) {
-			area =  Math.PI * ((Circle) shape).radius * ((Circle) shape).radius;
+			area = ((Circle) shape).area();
 		}
 		else if(shape instanceof Rectangle) {
-			area = ((Rectangle) shape).width * ((Rectangle) shape).height;
+			area = ((Rectangle) shape).area();
 		}
 		return area;
 	}

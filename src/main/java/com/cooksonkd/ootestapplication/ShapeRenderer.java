@@ -1,8 +1,8 @@
 package com.cooksonkd.ootestapplication;
 
 /**
- * @author Net2
- * 
+ * @author Keenan Cookson
+ *
  */
 
 class ShapeRenderer {
